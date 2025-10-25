@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sejarah Sumpah Pemuda - E-Learning Interaktif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --coklat-muda: #D7CCC8;
+            --coklat: #8D6E63;
+            --coklat-tua: #5D4037;
+            --emas: #C9A96E;
+            --krem: #F5F1EE;
+            --hitam: #3E2723;
+            --gold-light: #E8D9B4;
+            --merah: #C62828;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--krem);
+            color: var(--hitam);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.5s ease;
+            background: rgba(93, 64, 55, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header.scrolled {
+            padding: 15px 50px;
+            background: rgba(93, 64, 55, 0.98);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--emas);
+            animation: rotateLogo 10s linear infinite;
+        }
+
+        @keyframes rotateLogo {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: var(--krem);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--emas);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--emas);
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--krem);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--coklat-muda) 0%, var(--krem) 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 120px 20px 100px 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(201, 169, 110, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(141, 110, 99, 0.1) 0%, transparent 50%);
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            opacity: 0.1;
+            animation: floatRandom 20s infinite linear;
+            color: var(--coklat-tua);
+        }
+
+        @keyframes floatRandom {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(100px, 150px) rotate(90deg) scale(1.2); }
+            50% { transform: translate(200px, 50px) rotate(180deg) scale(0.8); }
+            75% { transform: translate(50px, 200px) rotate(270deg) scale(1.1); }
+            100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        .hero-icons {
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 4vw, 2rem);
+            margin-bottom: 2rem;
+            font-size: clamp(2.5rem, 10vw, 4rem);
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+            flex-wrap: wrap;
+        }
+
+        .hero-icons span {
+            animation: bounce 2s infinite;
+            display: inline-block;
+            color: var(--coklat-tua);
+        }
+
+        .hero-icons span:nth-child(1) { animation-delay: 0s; }
+        .hero-icons span:nth-child(2) { animation-delay: 0.2s; }
+        .hero-icons span:nth-child(3) { animation-delay: 0.4s; }
+        .hero-icons span:nth-child(4) { animation-delay: 0.6s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 12vw, 5rem);
+            color: var(--coklat-tua);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--coklat-tua), var(--emas));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.8s forwards, glow 2s ease-in-out infinite alternate;
+            line-height: 1.1;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(201, 169, 110, 0.5); }
+            to { text-shadow: 0 0 20px rgba(201, 169, 110, 0.8), 0 0 30px rgba(201, 169, 110, 0.6); }
+        }
+
+        .hero-quote {
+            font-size: clamp(1.4rem, 6vw, 2.2rem);
+            color: var(--coklat);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.1s forwards;
+        }
+
+        .hero-date {
+            display: inline-block;
+            background: var(--emas);
+            color: var(--hitam);
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin: 1.5rem 0;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.4s forwards, pulse 2s infinite 2s;
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            border: 2px solid transparent;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+            50% { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(20px); }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 50px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--coklat-tua);
+            display: inline-block;
+            position: relative;
+            padding-bottom: 15px;
+            animation: titleSlide 1s ease-out;
+        }
+
+        @keyframes titleSlide {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--emas);
+            animation: expandWidth 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+
+        /* SEJARAH SECTION */
+        .sejarah-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .sejarah-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--hitam);
+        }
+
+        .sejarah-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .sejarah-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+            border: 5px solid var(--emas);
+            background: var(--coklat-muda);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: imageFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes imageFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .sejarah-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, transparent 48%, var(--emas) 50%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, var(--emas) 50%, transparent 52%);
+            background-size: 30px 30px;
+            opacity: 0.1;
+            animation: patternMove 20s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        .sejarah-image:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-icon {
+            font-size: 8rem;
+            color: var(--coklat-tua);
+            opacity: 0.7;
+            animation: iconPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 0.9; }
+        }
+
+        /* DETAILED CONTENT */
+        .detail-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 6px solid var(--emas);
+            position: relative;
+            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: contentAppear 1s ease-out;
+        }
+
+        @keyframes contentAppear {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .detail-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--emas), var(--coklat));
+            animation: slideDown 2s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from { height: 0; }
+            to { height: 100%; }
+        }
+
+        .detail-section {
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .detail-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .detail-section h3 {
+            color: var(--coklat-tua);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 3px solid var(--emas);
+            padding-bottom: 0.8rem;
+            animation: headingSlide 0.8s ease-out;
+        }
+
+        @keyframes headingSlide {
+            from { transform: translateX(-30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .detail-section h3 i {
+            color: var(--emas);
+            animation: iconSpin 1s ease-out;
+        }
+
+        @keyframes iconSpin {
+            from { transform: rotate(-180deg); opacity: 0; }
+            to { transform: rotate(0); opacity: 1; }
+        }
+
+        .detail-section h4 {
+            color: var(--coklat);
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.4rem;
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .detail-section h5 {
+            color: var(--coklat);
+            margin: 1.2rem 0 0.8rem 0;
+            font-size: 1.2rem;
+            animation: fadeInRight 0.8s ease-out;
+        }
+
+        @keyframes fadeInRight {
+            from { transform: translateX(20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .detail-section p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            animation: textReveal 0.8s ease-out;
+        }
+
+        @keyframes textReveal {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .detail-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.2rem;
+            animation: listAppear 0.8s ease-out;
+        }
+
+        @keyframes listAppear {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .detail-section li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            font-size: 1.1rem;
+            animation: listItemAppear 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .detail-section li:nth-child(1) { animation-delay: 0.1s; }
+        .detail-section li:nth-child(2) { animation-delay: 0.2s; }
+        .detail-section li:nth-child(3) { animation-delay: 0.3s; }
+        .detail-section li:nth-child(4) { animation-delay: 0.4s; }
+        .detail-section li:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes listItemAppear {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .detail-section li::before {
+            content: '▶';
+            color: var(--emas);
+            position: absolute;
+            left: -1.5rem;
+            animation: bounce 1s infinite;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--emas), var(--gold-light));
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--coklat-tua);
+            position: relative;
+            overflow: hidden;
+            transform: translateX(-100px);
+            opacity: 0;
+            transition: all 0.6s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            animation: highlightPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes highlightPulse {
+            0%, 100% { box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+            50% { box-shadow: 0 8px 30px rgba(201, 169, 110, 0.3); }
+        }
+
+        .highlight-box.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .highlight-box h4 {
+            color: var(--hitam);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 0 0 5px rgba(0,0,0,0.1); }
+            to { text-shadow: 0 0 10px rgba(0,0,0,0.2); }
+        }
+
+        /* TOKOH SECTION */
+        .tokoh-section {
+            background: var(--coklat-tua);
+            color: var(--krem);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tokoh-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(201, 169, 110, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(201, 169, 110, 0.05) 0%, transparent 50%);
+            animation: backgroundMove 15s linear infinite;
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 100px 100px, -100px -100px; }
+        }
+
+        .tokoh-section .section-title h2 {
+            color: var(--krem);
+        }
+
+        .tokoh-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tokoh-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            animation: cardFloat 6s ease-in-out infinite;
+            animation-delay: calc(var(--delay) * 0.2s);
+        }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .tokoh-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--emas);
+            animation-play-state: paused;
+        }
+
+        .tokoh-icon {
+            font-size: 4rem;
+            color: var(--emas);
+            margin-bottom: 1.5rem;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .tokoh-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--emas);
+            animation: nameAppear 0.8s ease-out;
+        }
+
+        @keyframes nameAppear {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tokoh-info p {
+            font-size: 1rem;
+            color: #ddd;
+            animation: textReveal 0.8s ease-out 0.2s both;
+        }
+
+        /* QUIZ SECTION */
+        .quiz-section {
+            background: var(--coklat-muda);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(201, 169, 110, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(141, 110, 99, 0.1) 0%, transparent 50%);
+            animation: quizBackground 20s linear infinite;
+        }
+
+        @keyframes quizBackground {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 200px 200px, -200px -200px; }
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid var(--emas);
+            position: relative;
+            z-index: 2;
+            animation: containerAppear 1s ease-out;
+        }
+
+        @keyframes containerAppear {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: headerSlide 0.8s ease-out;
+        }
+
+        @keyframes headerSlide {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .quiz-header h3 {
+            color: var(--coklat-tua);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-progress {
+            height: 10px;
+            background: var(--krem);
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            animation: progressAppear 0.8s ease-out;
+        }
+
+        @keyframes progressAppear {
+            from { width: 0; opacity: 0; }
+            to { width: 100%; opacity: 1; }
+        }
+
+        .quiz-progress-bar {
+            height: 100%;
+            background: var(--emas);
+            width: 0%;
+            transition: width 0.5s ease;
+            animation: progressPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes progressPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .quiz-question {
+            margin-bottom: 2rem;
+            animation: questionAppear 0.8s ease-out;
+        }
+
+        @keyframes questionAppear {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .quiz-question h4 {
+            color: var(--coklat-tua);
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            padding: 1rem 1.5rem;
+            background: var(--krem);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            animation: optionAppear 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .quiz-option:nth-child(1) { animation-delay: 0.1s; }
+        .quiz-option:nth-child(2) { animation-delay: 0.2s; }
+        .quiz-option:nth-child(3) { animation-delay: 0.3s; }
+        .quiz-option:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes optionAppear {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .quiz-option:hover {
+            background: var(--gold-light);
+            transform: translateX(10px);
+        }
+
+        .quiz-option.selected {
+            background: var(--emas);
+            border-color: var(--coklat-tua);
+            color: var(--hitam);
+            font-weight: bold;
+            animation: optionSelect 0.3s ease-out;
+        }
+
+        @keyframes optionSelect {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            animation: navAppear 0.8s ease-out;
+        }
+
+        @keyframes navAppear {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .quiz-btn {
+            padding: 12px 25px;
+            background: var(--coklat-tua);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            animation: buttonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+            50% { box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
+        }
+
+        .quiz-btn:hover {
+            background: var(--coklat);
+            transform: translateY(-3px);
+            animation-play-state: paused;
+        }
+
+        .quiz-btn:disabled {
+            background: var(--coklat-muda);
+            color: var(--coklat);
+            cursor: not-allowed;
+            transform: none;
+            animation: none;
+        }
+
+        .quiz-result {
+            text-align: center;
+            display: none;
+            animation: resultAppear 1s ease-out;
+        }
+
+        @keyframes resultAppear {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .quiz-result h3 {
+            color: var(--coklat-tua);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-score {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--emas);
+            margin: 1.5rem 0;
+            animation: scoreBounce 0.8s ease-out;
+        }
+
+        @keyframes scoreBounce {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .quiz-feedback {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--coklat);
+            animation: feedbackAppear 0.8s ease-out 0.3s both;
+        }
+
+        @keyframes feedbackAppear {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .restart-btn {
+            padding: 12px 30px;
+            background: var(--emas);
+            color: var(--hitam);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: restartPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes restartPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .restart-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            animation-play-state: paused;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--coklat-tua);
+            color: var(--krem);
+            padding: 50px 20px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(201, 169, 110, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(141, 110, 99, 0.05) 0%, transparent 50%);
+            animation: footerBackground 15s linear infinite;
+        }
+
+        @keyframes footerBackground {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 100px 100px, -100px -100px; }
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+            animation: footerContentAppear 1s ease-out;
+        }
+
+        @keyframes footerContentAppear {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .footer-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--emas);
+            animation: footerHeading 0.8s ease-out;
+        }
+
+        @keyframes footerHeading {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .footer-content p {
+            animation: footerText 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes footerText {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+            position: relative;
+            z-index: 2;
+            animation: footerBottomAppear 1s ease-out 0.4s both;
+        }
+
+        @keyframes footerBottomAppear {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            .sejarah-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sejarah-image {
+                order: -1;
+            }
+            
+            header {
+                padding: 15px 30px;
+            }
+            
+            section {
+                padding: 80px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--coklat-tua);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.5s ease;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+                z-index: 1000;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .quiz-container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header {
+                padding: 15px 20px;
+            }
+            
+            section {
+                padding: 60px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .detail-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <a href="#" class="logo"><i class="fas fa-book-open"></i> Sumpah Pemuda</a>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#sejarah">Sejarah</a></li>
+            <li><a href="#detail">Detail</a></li>
+            <li><a href="#tokoh">Tokoh</a></li>
+            <li><a href="#quiz">Kuis</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="floating-elements">
+            <div class="floating-element">🇮🇩</div>
+            <div class="floating-element">📜</div>
+            <div class="floating-element">🔥</div>
+            <div class="floating-element">✊</div>
+            <div class="floating-element">🌟</div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-icons">
+                <span>🇮🇩</span>
+                <span>📜</span>
+                <span>🔥</span>
+                <span>✊</span>
+            </div>
+            <h1>SUMPAH PEMUDA</h1>
+            <p class="hero-quote">"Satu Nusa, Satu Bangsa, Satu Bahasa"</p>
+            <div class="hero-date">28 Oktober 1928</div>
+        </div>
+    </section>
+
+    <!-- Sejarah Section -->
+    <section id="sejarah" class="sejarah">
+        <div class="section-title">
+            <h2>Sejarah Sumpah Pemuda (1928): Tonggak Persatuan Bangsa Indonesia</h2>
+        </div>
+        <div class="sejarah-content">
+            <div class="sejarah-text">
+                <h3>Pendahuluan</h3>
+                <p>Sumpah Pemuda merupakan salah satu peristiwa paling monumental dalam sejarah perjuangan bangsa Indonesia. Peristiwa ini menjadi simbol lahirnya kesadaran nasional dan semangat persatuan di antara pemuda-pemuda dari berbagai daerah di Nusantara. Dideklarasikan pada 28 Oktober 1928, Sumpah Pemuda bukan sekadar janji moral, melainkan titik balik yang menegaskan identitas bangsa: satu tanah air, satu bangsa, dan satu bahasa — Indonesia.</p>
+                <p>Untuk memahami makna besar peristiwa ini, perlu kita menelusuri kondisi sosial, politik, dan budaya Indonesia pada masa awal abad ke-20, ketika semangat kebangsaan mulai tumbuh di tengah penjajahan Belanda.</p>
+            </div>
+            <div class="sejarah-image">
+                <div class="custom-icon">
+                    <i class="fas fa-scroll"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail Section -->
+    <section id="detail" class="detail">
+        <div class="section-title">
+            <h2>Detail Sejarah Lengkap</h2>
+        </div>
+        <div class="detail-content">
+            <div class="detail-section">
+                <h3><i class="fas fa-history"></i> Latar Belakang Terjadinya Sumpah Pemuda</h3>
+                
+                <h4>1. Kondisi Politik dan Sosial pada Masa Penjajahan Belanda</h4>
+                <p>Pada awal abad ke-20, Hindia Belanda masih berada di bawah kekuasaan kolonial Belanda. Rakyat Indonesia hidup dalam penindasan dan diskriminasi. Segala aspek kehidupan — politik, ekonomi, pendidikan, dan sosial — dikuasai oleh pemerintah kolonial. Kaum pribumi ditempatkan pada posisi bawah, sementara orang Eropa menikmati berbagai privilese.</p>
+                <p>Keterbelakangan pendidikan menyebabkan rakyat sulit mengembangkan pemikiran kritis terhadap penjajahan. Namun, kebijakan Politik Etis (1901) yang digagas oleh pemerintah Belanda membuka sedikit ruang bagi penduduk pribumi untuk menempuh pendidikan Barat. Dari sinilah muncul golongan terpelajar pribumi yang mulai berpikir tentang kemerdekaan dan persatuan bangsa.</p>
+                
+                <h4>2. Lahirnya Organisasi-Organisasi Pergerakan Nasional</h4>
+                <p>Awal abad ke-20 menjadi masa kebangkitan kesadaran nasional. Muncul berbagai organisasi modern yang didirikan oleh kaum pelajar dan intelektual muda. Beberapa organisasi penting antara lain:</p>
+                <ul>
+                    <li><strong>Budi Utomo (1908)</strong>, didirikan oleh Dr. Soetomo dan para mahasiswa STOVIA. Organisasi ini dianggap sebagai pelopor kebangkitan nasional meskipun awalnya masih bersifat kedaerahan (Jawa dan Madura).</li>
+                    <li><strong>Sarekat Islam (1911)</strong>, dipelopori oleh Haji Samanhudi dan kemudian berkembang pesat di bawah H.O.S. Tjokroaminoto. Organisasi ini memperjuangkan hak-hak ekonomi dan politik kaum pribumi.</li>
+                    <li><strong>Indische Partij (1912)</strong>, didirikan oleh tiga tokoh radikal yaitu Douwes Dekker, Tjipto Mangunkusumo, dan Ki Hajar Dewantara. Mereka secara terang-terangan menyerukan kemerdekaan Hindia dari penjajahan Belanda.</li>
+                </ul>
+                <p>Kemunculan berbagai organisasi ini melahirkan semangat baru: perjuangan tidak lagi bersifat lokal, tetapi nasional. Pemuda mulai menyadari bahwa penjajahan hanya bisa diakhiri dengan persatuan seluruh bangsa Indonesia.</p>
+                
+                <h4>3. Peran Pemuda dan Pendidikan</h4>
+                <p>Pemuda pada masa itu merupakan kalangan terdidik yang banyak belajar di sekolah-sekolah Belanda. Mereka terpapar gagasan tentang nasionalisme, demokrasi, dan kemerdekaan dari dunia Barat. Namun, mereka juga melihat ketimpangan sosial yang tajam di tanah air mereka.</p>
+                <p>Banyak pelajar kemudian membentuk organisasi pemuda kedaerahan seperti:</p>
+                <ul>
+                    <li>Jong Java (1915)</li>
+                    <li>Jong Sumatranen Bond (1917)</li>
+                    <li>Jong Ambon</li>
+                    <li>Jong Celebes</li>
+                    <li>Sekar Rukun</li>
+                    <li>Pemuda Betawi</li>
+                    <li>Jong Batak Bond, dan lainnya.</li>
+                </ul>
+                <p>Awalnya, organisasi-organisasi ini masih berorientasi pada semangat kedaerahan. Namun seiring waktu, mereka menyadari bahwa perpecahan berdasarkan suku justru menghambat perjuangan nasional. Kesadaran inilah yang menjadi dasar bagi terselenggaranya Kongres Pemuda.</p>
+            </div>
+            
+            <div class="detail-section">
+                <h3><i class="fas fa-users"></i> Kongres Pemuda I (1926)</h3>
+                <p>Kongres Pemuda I diselenggarakan pada 30 April – 2 Mei 1926 di Jakarta, dipelopori oleh Perhimpunan Pelajar-Pelajar Indonesia (PPPI) yang beranggotakan pelajar dari berbagai daerah. Tujuannya adalah mempererat hubungan antarorganisasi pemuda dan menumbuhkan semangat persatuan.</p>
+                <p>Namun, Kongres I belum menghasilkan keputusan besar karena masih banyak perbedaan pandangan. Meski demikian, kongres ini menjadi langkah awal menuju Kongres Pemuda II yang lebih matang dua tahun kemudian.</p>
+                
+                <h3>Kongres Pemuda II (27–28 Oktober 1928)</h3>
+                <p>Kongres Pemuda II merupakan kelanjutan dan penyempurnaan dari Kongres I. Kongres ini dilaksanakan di Jakarta pada tanggal 27–28 Oktober 1928, dipimpin oleh Sugondo Djojopuspito dengan wakil ketua R.M. Djoko Marsaid. Sekretarisnya adalah Muhammad Yamin, seorang tokoh muda dari Sumatra yang kelak berperan besar dalam perumusan Sumpah Pemuda.</p>
+                
+                <h4>1. Tujuan Kongres</h4>
+                <p>Tujuan utama Kongres Pemuda II adalah:</p>
+                <ul>
+                    <li>Mewujudkan cita-cita persatuan Indonesia.</li>
+                    <li>Mempererat hubungan antarorganisasi pemuda.</li>
+                    <li>Menanamkan semangat kebangsaan, kebudayaan, dan bahasa persatuan.</li>
+                </ul>
+                
+                <h4>2. Jalannya Kongres</h4>
+                <p>Kongres dilaksanakan dalam tiga sesi di tiga tempat berbeda:</p>
+                <ul>
+                    <li><strong>Sesi Pertama</strong> (27 Oktober 1928, Gedung Katholieke Jongenlingen Bond – Lapangan Banteng)
+                        <br>Pembicara: Mr. Soegondo Djojopuspito, Mr. Mohammad Yamin, dan beberapa tokoh lainnya.
+                        <br>Membahas pentingnya persatuan bangsa dan peran pemuda dalam membangun Indonesia merdeka.</li>
+                    <li><strong>Sesi Kedua</strong> (28 Oktober 1928 pagi, Gedung Oost-Java Bioscoop)
+                        <br>Membahas masalah kebudayaan dan pentingnya bahasa persatuan.
+                        <br>Mohammad Yamin mengemukakan ide bahwa bahasa Melayu dapat dijadikan bahasa persatuan, karena mudah diterima di berbagai daerah.</li>
+                    <li><strong>Sesi Ketiga</strong> (28 Oktober 1928 sore, Gedung Indonesische Clubhuis Kramat No. 106)
+                        <br>Di sinilah rumusan "Sumpah Pemuda" dibacakan dan diikrarkan bersama oleh para peserta kongres.
+                        <br>Lagu "Indonesia Raya" ciptaan Wage Rudolf Supratman untuk pertama kalinya dimainkan menggunakan biola sebagai penutup kongres.</li>
+                </ul>
+            </div>
+            
+            <div class="detail-section">
+                <h3><i class="fas fa-file-contract"></i> Isi Sumpah Pemuda</h3>
+                <p>Rumusan Sumpah Pemuda ditulis oleh Muhammad Yamin, dan dibacakan oleh ketua kongres Soegondo Djojopuspito. Teks tersebut berbunyi:</p>
+                
+                <div class="highlight-box">
+                    <h4><i class="fas fa-star"></i> Sumpah Pemuda</h4>
+                    <p><strong>Kami putra dan putri Indonesia, mengaku bertumpah darah yang satu, tanah air Indonesia.</strong></p>
+                    <p><strong>Kami putra dan putri Indonesia, mengaku berbangsa yang satu, bangsa Indonesia.</strong></p>
+                    <p><strong>Kami putra dan putri Indonesia, menjunjung bahasa persatuan, bahasa Indonesia.</strong></p>
+                </div>
+                
+                <p>Ketiga ikrar tersebut menggambarkan tekad pemuda Indonesia untuk bersatu tanpa memandang perbedaan suku, agama, ras, dan daerah.</p>
+            </div>
+            
+            <div class="detail-section">
+                <h3><i class="fas fa-chart-line"></i> Dampak Sumpah Pemuda</h3>
+                
+                <h4>Meningkatkan Rasa Nasionalisme</h4>
+                <p>Sumpah Pemuda memperkuat kesadaran bahwa bangsa Indonesia adalah satu kesatuan yang utuh, bukan sekumpulan daerah terpisah.</p>
+                
+                <h4>Mendorong Persatuan Pergerakan Nasional</h4>
+                <p>Setelah 1928, banyak organisasi pemuda melebur dalam organisasi nasional yang lebih besar seperti Indonesia Muda (1931).</p>
+                
+                <h4>Bahasa Indonesia Ditetapkan sebagai Bahasa Persatuan</h4>
+                <p>Keputusan menjunjung bahasa Indonesia menjadi tonggak lahirnya bahasa nasional yang hingga kini menjadi alat pemersatu bangsa.</p>
+                
+                <h4>Menumbuhkan Semangat Kemerdekaan</h4>
+                <p>Sumpah Pemuda menjadi inspirasi bagi perjuangan kemerdekaan 1945. Semangatnya terus hidup dalam perjuangan melawan penjajahan.</p>
+            </div>
+            
+            <div class="detail-section">
+                <h3><i class="fas fa-brain"></i> Makna Historis dan Filosofis Sumpah Pemuda</h3>
+                <p>Sumpah Pemuda memiliki makna yang mendalam bagi perjalanan bangsa Indonesia:</p>
+                <ul>
+                    <li><strong>Simbol Persatuan dan Identitas Nasional:</strong> Menyatukan keragaman suku dan budaya di bawah satu identitas "Indonesia".</li>
+                    <li><strong>Landasan Negara Merdeka:</strong> Menjadi pondasi ideologis lahirnya Indonesia Merdeka tahun 1945.</li>
+                    <li><strong>Inspirasi Generasi Muda:</strong> Menegaskan bahwa perubahan besar dimulai dari semangat dan tekad pemuda.</li>
+                </ul>
+            </div>
+            
+            <div class="detail-section">
+                <h3><i class="fas fa-book"></i> Penutup</h3>
+                <p>Sumpah Pemuda bukan hanya peristiwa sejarah yang patut dikenang setiap tanggal 28 Oktober, tetapi juga warisan moral dan ideologis yang harus dijaga. Nilai-nilai persatuan, nasionalisme, dan cinta tanah air yang terkandung di dalamnya relevan sepanjang masa.</p>
+                <p>Di tengah tantangan globalisasi, perbedaan pandangan politik, serta arus informasi yang sering memecah belah, semangat Sumpah Pemuda menjadi pengingat bahwa kekuatan Indonesia terletak pada persatuan dalam keberagaman — Bhinneka Tunggal Ika.</p>
+                <p><strong>"Satu Nusa, Satu Bangsa, Satu Bahasa — Indonesia."</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokoh Section -->
+    <section id="tokoh" class="tokoh-section">
+        <div class="section-title">
+            <h2>Tokoh-Tokoh Penting dalam Sumpah Pemuda</h2>
+        </div>
+        <div class="tokoh-container">
+            <div class="tokoh-card" style="--delay: 0">
+                <div class="tokoh-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="tokoh-info">
+                    <h3>Soegondo Djojopoespito</h3>
+                    <p>Ketua Kongres Pemuda II yang memimpin jalannya kongres dan pembacaan Sumpah Pemuda.</p>
+                </div>
+            </div>
+            <div class="tokoh-card" style="--delay: 1">
+                <div class="tokoh-icon">
+                    <i class="fas fa-pen-fancy"></i>
+                </div>
+                <div class="tokoh-info">
+                    <h3>Mohammad Yamin</h3>
+                    <p>Pencetus dan perumus Sumpah Pemuda yang memiliki peran penting dalam perumusan ikrar tersebut.</p>
+                </div>
+            </div>
+            <div class="tokoh-card" style="--delay: 2">
+                <div class="tokoh-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="tokoh-info">
+                    <h3>Wage Rudolf Supratman</h3>
+                    <p>Penggubah lagu Indonesia Raya yang pertama kali diperdengarkan dalam Kongres Pemuda II.</p>
+                </div>
+            </div>
+            <div class="tokoh-card" style="--delay: 3">
+                <div class="tokoh-icon">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <div class="tokoh-info">
+                    <h3>Djoko Marsaid</h3>
+                    <p>Wakil ketua kongres yang berasal dari Jong Java.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="quiz-section">
+        <div class="section-title">
+            <h2>Kuis Sumpah Pemuda</h2>
+        </div>
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h3>Uji Pemahaman Anda</h3>
+                <p>Jawablah pertanyaan-pertanyaan berikut untuk menguji pengetahuan Anda tentang Sumpah Pemuda</p>
+            </div>
+            
+            <div class="quiz-progress">
+                <div class="quiz-progress-bar" id="quizProgress"></div>
+            </div>
+            
+            <div class="quiz-content" id="quizContent">
+                <div class="quiz-question active" id="question1">
+                    <h4>1. Kapan Sumpah Pemuda dibacakan?</h4>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="true">28 Oktober 1928</div>
+                        <div class="quiz-option">17 Agustus 1945</div>
+                        <div class="quiz-option">20 Mei 1908</div>
+                        <div class="quiz-option">10 November 1945</div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question" id="question2">
+                    <h4>2. Siapa pencipta lagu Indonesia Raya?</h4>
+                    <div class="quiz-options">
+                        <div class="quiz-option">Mohammad Yamin</div>
+                        <div class="quiz-option" data-correct="true">Wage Rudolf Supratman</div>
+                        <div class="quiz-option">Soegondo Djojopuspito</div>
+                        <div class="quiz-option">Ir. Soekarno</div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question" id="question3">
+                    <h4>3. Siapa ketua Kongres Pemuda II?</h4>
+                    <div class="quiz-options">
+                        <div class="quiz-option">Mohammad Yamin</div>
+                        <div class="quiz-option">Wage Rudolf Supratman</div>
+                        <div class="quiz-option" data-correct="true">Soegondo Djojopuspito</div>
+                        <div class="quiz-option">Djoko Marsaid</div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question" id="question4">
+                    <h4>4. Apa isi butir pertama Sumpah Pemuda?</h4>
+                    <div class="quiz-options">
+                        <div class="quiz-option">Kami poetra dan poetri Indonesia mengakoe berbangsa jang satoe, bangsa Indonesia</div>
+                        <div class="quiz-option" data-correct="true">Kami poetra dan poetri Indonesia mengakoe bertoempah darah jang satoe, tanah Indonesia</div>
+                        <div class="quiz-option">Kami poetra dan poetri Indonesia mendjoendjoeng bahasa persatoean, bahasa Indonesia</div>
+                        <div class="quiz-option">Kami poetra dan poetri Indonesia bersumpah setia kepada Indonesia</div>
+                    </div>
+                </div>
+                
+                <div class="quiz-question" id="question5">
+                    <h4>5. Di mana Kongres Pemuda II dilaksanakan?</h4>
+                    <div class="quiz-options">
+                        <div class="quiz-option">Surabaya</div>
+                        <div class="quiz-option">Yogyakarta</div>
+                        <div class="quiz-option">Bandung</div>
+                        <div class="quiz-option" data-correct="true">Jakarta</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quiz-navigation">
+                <button class="quiz-btn" id="prevBtn" disabled>Sebelumnya</button>
+                <button class="quiz-btn" id="nextBtn">Selanjutnya</button>
+            </div>
+            
+            <div class="quiz-result" id="quizResult">
+                <h3>Hasil Kuis</h3>
+                <div class="quiz-score" id="quizScore">0/5</div>
+                <div class="quiz-feedback" id="quizFeedback"></div>
+                <button class="restart-btn" id="restartBtn">Ulangi Kuis</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>Mari Teruskan Semangat Sumpah Pemuda!</h3>
+            <p>Website pembelajaran ini dibuat untuk memperingati dan mempelajari sejarah Sumpah Pemuda sebagai bagian penting dari perjuangan kemerdekaan Indonesia.</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 E-Learning Sumpah Pemuda. Semua Hak Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Animation on scroll for detail sections
+            const detailSections = document.querySelectorAll('.detail-section, .highlight-box');
+            detailSections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight * 0.85) {
+                    section.classList.add('visible');
+                }
+            });
+        });
+
+        // Quiz functionality
+        const quizQuestions = document.querySelectorAll('.quiz-question');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const quizProgress = document.getElementById('quizProgress');
+        const quizContent = document.getElementById('quizContent');
+        const quizResult = document.getElementById('quizResult');
+        const quizScore = document.getElementById('quizScore');
+        const quizFeedback = document.getElementById('quizFeedback');
+        const restartBtn = document.getElementById('restartBtn');
+        
+        let currentQuestion = 0;
+        let userAnswers = [];
+        
+        // Initialize quiz
+        function initQuiz() {
+            showQuestion(currentQuestion);
+            updateProgress();
+        }
+        
+        // Show specific question
+        function showQuestion(index) {
+            quizQuestions.forEach((question, i) => {
+                question.classList.toggle('active', i === index);
+            });
+            
+            prevBtn.disabled = index === 0;
+            nextBtn.textContent = index === quizQuestions.length - 1 ? 'Selesai' : 'Selanjutnya';
+        }
+        
+        // Update progress bar
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+            quizProgress.style.width = `${progress}%`;
+        }
+        
+        // Handle option selection
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const question = this.closest('.quiz-question');
+                const questionIndex = Array.from(quizQuestions).indexOf(question);
+                
+                // Remove selected class from all options in this question
+                question.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Store user's answer
+                userAnswers[questionIndex] = this.getAttribute('data-correct') === 'true';
+            });
+        });
+        
+        // Navigation between questions
+        nextBtn.addEventListener('click', function() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+                updateProgress();
+            } else {
+                // Calculate score and show results
+                calculateScore();
+            }
+        });
+        
+        prevBtn.addEventListener('click', function() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+                updateProgress();
+            }
+        });
+        
+        // Calculate final score
+        function calculateScore() {
+            const score = userAnswers.filter(answer => answer === true).length;
+            const totalQuestions = quizQuestions.length;
+            
+            quizScore.textContent = `${score}/${totalQuestions}`;
+            
+            // Provide feedback based on score
+            if (score === totalQuestions) {
+                quizFeedback.textContent = "Luar biasa! Anda benar-benar memahami sejarah Sumpah Pemuda.";
+            } else if (score >= totalQuestions * 0.7) {
+                quizFeedback.textContent = "Bagus! Pengetahuan Anda tentang Sumpah Pemuda cukup baik.";
+            } else if (score >= totalQuestions * 0.5) {
+                quizFeedback.textContent = "Cukup baik, tetapi masih perlu belajar lebih lanjut tentang Sumpah Pemuda.";
+            } else {
+                quizFeedback.textContent = "Anda perlu mempelajari lebih lanjut tentang Sumpah Pemuda. Coba ulangi materi di atas!";
+            }
+            
+            // Show results and hide quiz content
+            quizContent.style.display = 'none';
+            document.querySelector('.quiz-navigation').style.display = 'none';
+            quizResult.style.display = 'block';
+        }
+        
+        // Restart quiz
+        restartBtn.addEventListener('click', function() {
+            currentQuestion = 0;
+            userAnswers = [];
+            
+            // Reset all selections
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Show quiz content and hide results
+            quizContent.style.display = 'block';
+            document.querySelector('.quiz-navigation').style.display = 'flex';
+            quizResult.style.display = 'none';
+            
+            // Reinitialize quiz
+            initQuiz();
+        });
+        
+        // Initialize quiz on page load
+        document.addEventListener('DOMContentLoaded', initQuiz);
+    </script>
+</body>
+</html>
